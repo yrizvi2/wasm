@@ -1,0 +1,219 @@
+    1  sudo apt update && sudo apt upgrade
+    2  sudo apt install build-essential curl git
+    3  call back call bac
+    4  ls
+    5  mkdir webassembly
+    6  ls
+    7  cd webassembly
+    8  mkdir wamr
+    9  cd wamr
+   10  ls
+   11  cd ../
+   12  sudo apt-get install build-essential clang cmake ninja-build wget curl git
+   13  sudo apt-get install neovim micro mc tmux
+   14  wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-21/wasi-sdk-21.0-linux.tar.gz
+   15  tar -xf wasi-sdk-21.0-linux.tar.gz
+   16  sudo mkdir /opt/wasi-sdk
+   17  sudo mv ./wasi-sdk-21.0/* /opt/wasi-sdk/
+   18  git clone https://github.com/bytecodealliance/wasm-micro-runtime.git
+   19  ls
+   20  cd wasm-micro-runtime
+   21  mdkir build
+   22  mkdir build
+   23  cd build
+   24  cmake ..
+   25  make
+   26  cd ..
+   27  cd product-mini/platforms/linux
+   28  mkdir build
+   29  cd build
+   30  cmake ..
+   31  make
+   32  mkdir ~/bin
+   33  cp ./iwasm ~/bin/iwasm
+   34  cd ~
+   35  ls
+   36  git clone --recursive https://github.com/WebAssembly/wabt
+   37  cd wabt
+   38  git submodule update --init
+   39  mkdir build
+   40  cd build
+   41  cmake ..
+   42  cmake --build .
+   43  cd ~
+   44  mkdir hi
+   45  cd hi
+   46  micro hello.c
+   47  /opt/wasi-sdk/bin/clang -o hello.wasm ./hello.c
+   48  ls -al
+   49  $ ~/bin/iwasm ./hello.wasm
+   50  ~/bin/iwasm ./hello.wasm
+   51  ~/wabt/build/wasm2wat -o hello.wat ./hello.wasm
+   52  nvim hello.wat
+   53  mkdir history
+   54  cd history
+   55  history > hello-world-iwasm.txt
+   56  ls
+   57  cd ..
+   58  ls
+   59  cd webassembly
+   60  ls
+   61  rm wamr
+   62  rm -rf wamr
+   63  ls
+   64  mkdir native-library
+   65  cd native-library
+   66  nano plugin.c
+   67  ls
+   68  micro plugin.c
+   69  micro test_plugin.c
+   70  ls
+   71  cd ..
+   72  ls
+   73  cd wasm-micro-runtime
+   74  ls
+   75  cd product-mini
+   76  ls
+   77  cd platforms
+   78  ls
+   79  cd linux
+   80  ls
+   81  cd build
+   82  ls
+   83  cd ../
+   84  ls
+   85  cd ../
+   86  ls
+   87  cd linux-sgx
+   88  ls
+   89  cd ../
+   90  ls
+   91  cd ../
+   92  ls
+   93  cd ../
+   94  ls
+   95  cd wamr-compiler
+   96  ls
+   97  cd ../
+   98  ls
+   99  clang --version
+  100  cd ../
+  101  ;s
+  102  ls
+  103  cd webassembly
+  104  ls
+  105  cd native-library
+  106  ls
+  107  clang --target=wasm32 -nostdlib -Wl,--no-entry -Wl,--export=run -o test_plugin.wasm test_plugin.c
+  108  micro test_plugin.c
+  109  micro plugin.c
+  110  clang --target=wasm32 -nostdlib -Wl,--no-entry -Wl,--export=run -o test_plugin.wasm test_plugin.c
+  111  cd ../
+  112  ls
+  113  cd wasi-sdk-21.0
+  114  ls
+  115  cd bin
+  116  cd ../
+  117  ;s
+  118  ls
+  119  cd ../
+  120  ls
+  121  cd bin
+  122  ls
+  123  cd ../
+  124  ls
+  125  cd webassembly
+  126  ls
+  127  cd wasi-sdk-21.0
+  128  ls
+  129  cd ../
+  130  ls
+  131  tar -xvzf wasi-sdk-21.0-linux.tar.gz
+  132  ls
+  133  cd wasi-sdk-21.0
+  134  ls
+  135  ~/webassembly/wasi-sdk-21.0/bin/clang --version
+  136  export WASI_SDK_PATH=$HOME/webassembly/wasi-sdk-21.0
+  137  echo 'export WASI_SDK_PATH=$HOME/webassembly/wasi-sdk-21.0' >> ~/.bashrc
+  138  source ~/.bashrc
+  139  echo $WASI_SDK_PATH
+  140  cd ../
+  141  ls
+  142  cd native-library
+  143  ls
+  144  $WASI_SDK_PATH/bin/clang --target=wasm32-wasi -Wl,--no-entry -Wl,--export-all -nostdlib -o test_plugin.wasm test_plugin.c
+  145  ls
+  146  gcc -fPIC -shared -o libplugin.so plugin.c -I $HOME/wasm/tools/wasm-micro-runtime/core/iwasm/include -fvisibility=default -O0
+  147  find ~/wasm/tools/wasm-micro-runtime/core/iwams/include/wasm_export.h
+  148  find ~/wasm/tools/wasm-micro-runtime/core/iwasm/include/wasm_export.h
+  149  cd ../
+  150  ls
+  151  cd wasm-micro-runtime
+  152  ls
+  153  cd core
+  154  ls
+  155  cd iwasm
+  156  ls
+  157  l include
+  158  cd ~
+  159  cd webassembly
+  160  ls
+  161  cd native-library
+  162  ls
+  163  gcc -fPIC -shared -o libplugin.so plugin.c -I $HOME/webassembly/micro-runtime/core/iwasm/include -fvisibility=default -O0
+  164  gcc -fPIC -shared -o libplugin.so plugin.c -I $HOME/webassembly/wasm-micro-runtime/core/iwasm/include -fvisibility=default -O0
+  165  micro plugin.c
+  166  gcc -fPIC -shared -o libplugin.so plugin.c -I $HOME/webassembly/wasm-micro-runtime/core/iwasm/include -fvisibility=default -O0
+  167  micro plugin.c
+  168  gcc -fPIC -shared -o libplugin.so plugin.c -I $HOME/webassembly/wasm-micro-runtime/core/iwasm/include -fvisibility=default -O0
+  169  ls
+  170  rm test_plugin.wasm
+  171  $WASI_SDK_PATH/bin/clang --target=wasm32-wasi -nostdlib -Wl,--no-entry -Wl,--export=run -o test_plugin.wasm test_plugin.c
+  172  ~/wasm/tools/wasm-micro-runtime/product-mini/platforms/linux/build/iwasm  --native-lib=./libplugin.so   test_plugin.wasm
+  173  ~/webassembly/wasm-micro-runtime/product-mini/platforms/linux/build/iwasm  --native-lib=./libplugin.so   test_plugin.wasm
+  174  micro test_plugin.c
+  175  $WASI_SDK_PATH/bin/clang --target=wasm32-wasi -nostdlib -Wl,--no-entry -Wl,--export=run -o test_plugin.wasm test_plugin.c
+  176  ls
+  177  gcc -fPIC -shared -o libplugin.so plugin.c -I $HOME/webassembly/wasm-micro-runtime/core/iwasm/include -fvisibility=default -O0
+  178  ~/webassembly/wasm-micro-runtime/product-mini/platforms/linux/build/iwasm --native-lib=./libplugin.so test_plugin.wasm run
+  179  micro test_plugin.c
+  180  micro plugin.c
+  181  ls
+  182  micro plugin.c
+  183  micro test_plugin.c
+  184  gcc -fPIC -shared -o libplugin.so plugin.c  -I $HOME/webassembly/wasm-micro-runtime/core/iwasm/include -fvisibility=default -O0
+  185  ls
+  186  nm -D libplugin.so | grep get_wasm_native_symbols
+  187  micro test_plugin.c
+  188  micro plugin.c
+  189  objdump -T libplugin.so | grep print_42
+  190  ~/webassembly/wasm-micro-runtime/product-mini/platforms/linux/build/iwasm --native-lib=./libplugin.so test_plugin.wasm run
+  191  ~/webassembly/wasm-micro-runtime/product-mini/platforms/linux/build/iwasm --native-lib=./libplugin.so test_plugin.wasm -f run
+  192  micro main.c
+  193  cp test_plugin.c
+  194  cp test_plugin.c main.c
+  195  micro main.c
+  196  $WASI_SDK_PATH/bin/clang -o test_plugin.wasm test_plugin.c
+  197  $WASI_SDK_PATH/bin/clang -o test_plugin.wasm main.c
+  198  micro main.c
+  199  $WASI_SDK_PATH/bin/clang -o test_plugin.wasm main.c
+  200  ls
+  201  ~/webassembly/wasm-micro-runtime/product-mini/platforms/linux/build/iwasm --native-lib=./libplugin.so test_plugin.wasm
+  202  ls plugin.so
+  203  ls
+  204  micro plugin.c
+  205  gcc -fPIC -shared -o libplugin.so plugin.c  -I $HOME/webassembly/wasm-micro-runtime/core/iwasm/include -fvisibility=default -O0
+  206  ~/webassembly/wasm-micro-runtime/product-mini/platforms/linux/build/iwasm --native-lib=./libplugin.so test_plugin.wasm
+  207  micro plugin.c
+  208  micro test_plugin.c
+  209  ls
+  210  micro main.c
+  211  micro test_plugin.c
+  212  micro main.c
+  213  cd ../
+  214  ls
+  215  cd native-library
+  216  ls
+  217  mkdir callback
+  218  ls
+  219  history >> nativeplugin.txt

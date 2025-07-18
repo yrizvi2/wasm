@@ -1,0 +1,3 @@
+/home/yrizvi/webassembly/native-library/callback/build/CMakeFiles/iwasm.dir
+/home/yrizvi/webassembly/native-library/callback/build/CMakeFiles/edit_cache.dir
+/home/yrizvi/webassembly/native-library/callback/build/CMakeFiles/rebuild_cache.dir

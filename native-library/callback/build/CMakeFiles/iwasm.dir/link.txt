@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/iwasm.dir/main.c.o -o iwasm  /home/yrizvi/webassembly/wasm-micro-runtime/product-mini/platforms/linux/build/libiwasm.a -lpthread -lm -ldl 
